@@ -74,7 +74,14 @@ if ((typeof (Dell) === 'undefined') || (Dell=== null)) {
 		var hour, minute, ampm;
 		errors = [];
 			
-		var char =  getLastChar();//String.fromCharCode(event.keyCode); 			
+		var char =  getLastChar();//String.fromCharCode(event.keyCode);
+
+		if ( value.length == 1 && char == ' ' ) { // no leading spaces
+			errors.push(messages.enterNumericHour);
+			rollback();
+			return;
+		}
+
 		var hm = value.split(":");
 
 		if ( hm.length == 0){
@@ -145,7 +152,10 @@ if ((typeof (Dell) === 'undefined') || (Dell=== null)) {
 				} else if ( mt[1].length == 2 && second!= 'm' ){
 					errors.push(messages.enterAMPM);
 					rollback();				
-				}  else {
+				}  else if (mt[1].length > 2 ) { 
+					errors.push(messages.enterAMPM);
+					rollback();				
+				} else {
 					ampm = first + second;
 				}
 
