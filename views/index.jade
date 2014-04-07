@@ -1,0 +1,26 @@
+extends layout
+
+block content
+	div(id="overlay")
+		section(id="intro")
+			div(class="intro-body")
+				div(class="container")
+					div(class="row")
+						h2 Welcome to #{title}
+						div(class="col-lg-12")
+							h3 Please enter the time and minutes
+							p We will be happy to do the math for you.
+							div(class="time-form")
+								div(class="time-wrapper")
+									div(style="clear:both;") Time
+									input(type="text",id="time",class="time-input",placeholder="HH:MM AM|PM",maxlength="10")
+								div(class="minute-wrapper")
+									div(style="clear:both;") Minutes 
+									input(type="text",id="minute",class="minute-input",placeholder="_____",maxlength="5")
+								div(class="button-wrapper")
+									input(type="button",id="btnCalculate",value="Calculate")
+						
+							p(id="error")
+							
+							div(class="timer")
+								div(class="time-wrapper",id="result",style="display:none;")
